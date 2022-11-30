@@ -14,12 +14,6 @@
   "attributes": {
     "Name": {
       "type": "string"
-    },
-    "restaurant": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::restaurant.restaurant",
-      "inversedBy": "categories"
     }
   }
 }

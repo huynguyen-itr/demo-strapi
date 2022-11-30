@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transactions",
+  "info": {
+    "singularName": "transaction",
+    "pluralName": "transactions",
+    "displayName": "Transaction"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "stripe_id": {
+      "type": "uid"
+    },
+    "amount_total": {
+      "type": "decimal"
+    },
+    "currency": {
+      "type": "string",
+      "default": "usd"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "shipping_city": {
+      "type": "string"
+    },
+    "shipping_country": {
+      "type": "string"
+    },
+    "shipping_line1": {
+      "type": "string"
+    },
+    "shipping_line2": {
+      "type": "string"
+    },
+    "shipping_postal_code": {
+      "type": "string"
+    },
+    "shipping_state": {
+      "type": "string"
+    },
+    "payment_name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "complete",
+        "pending",
+        "cancel"
+      ]
+    }
+  }
+}
