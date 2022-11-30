@@ -11,7 +11,7 @@ export default function Nav() {
 
   return (
     <NavStyles>
-      <Link href="/">Styled.</Link>
+      <Link href="/">Biosphere+</Link>
       <NavItems>
         <User />
         <div onClick={() => setShowCart(true)}>

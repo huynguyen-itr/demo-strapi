@@ -1,23 +1,56 @@
+import React, { useState, useEffect } from 'react';
 import { FaUserCircle } from "react-icons/fa";
-import { useRouter } from "next/router";
-import { useUser } from "@auth0/nextjs-auth0";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 export default function User() {
-  const route = useRouter();
-  const { user, error, isLoading } = useUser();
-  if (!user)
+  const router = useRouter();
+  const [isLogged, setIsLogged] = useState(false);
+  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    setIsLogged(!!localStorage.getItem('jwt'));
+    setUsername(localStorage.getItem('username'));
+    setEmail(localStorage.getItem('email'));
+  }, []);
+
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
+    setIsLogged(false);
+  };
+
+  const LoginButton = () => <a href={`http://localhost:1337/api/connect/cognito`}>
+    <button style={{ width: '150px' }}>Connect to cognito</button>
+  </a>;
+
+  const LogoutButton = (props) => <button onClick={props.onClick}>Logout</button>;
+
+  let buttons = <LoginButton />
+  if (isLogged) {
+    buttons = <LogoutButton onClick={logout} />;
+  }
+
+  if (!isLogged)
     return (
-      <div onClick={() => route.push(`/api/auth/login`)}>
-        <FaUserCircle className="profile" />
-        <h3>Login</h3>
-      </div>
+      // <div onClick={() => {}}>
+      //   <FaUserCircle className="profile" />
+      //   <h3>Login with cognito</h3>
+      // </div>
+      <LoginButton />
     );
   return (
-    <Profile onClick={() => route.push(`/profile`)}>
-      <img src={user.picture} alt={user.name} />
-      <h3>{user.name}</h3>
-    </Profile>
+      <Profile>
+        <h3 onClick={() => router.push('/order')}>Orders</h3>
+        <h3 style={{padding: "1rem 0 0 0"}}>{email}</h3>
+        <LogoutButton onClick={logout}/>
+      </Profile>
   );
 }
 

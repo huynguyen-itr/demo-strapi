@@ -1,13 +1,11 @@
 import Stripe from "stripe";
+import { useStateContext } from "../../lib/context";
 const stripe = new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`);
-import { getSession } from "@auth0/nextjs-auth0";
 
 export default async function handler(req, res) {
-  const session = getSession(req, res);
-  const user = session?.user;
-  console.log(user);
-  if (user) {
-    const stripeId = user["http://localhost:3000/stripe_customer_id"];
+  const { userId } = req.headers;
+
+  if (userId) {
     if (req.method === "POST") {
       try {
         // Create Checkout Sessions from body params.
@@ -15,16 +13,12 @@ export default async function handler(req, res) {
           submit_type: "pay",
           mode: "payment",
           payment_method_types: ["card"],
-          customer: stripeId,
+          customer: userId,
           shipping_address_collection: {
             allowed_countries: ["US", "CA"],
           },
 
           allow_promotion_codes: true,
-          shipping_options: [
-            { shipping_rate: "shr_1L7HGSJvB7fsxaM1DbSs7DeV" },
-            { shipping_rate: "shr_1L7HGyJvB7fsxaM1OpMXx2Fn" },
-          ],
           line_items: req.body.map((item) => {
             return {
               price_data: {
@@ -67,10 +61,6 @@ export default async function handler(req, res) {
           },
 
           allow_promotion_codes: true,
-          shipping_options: [
-            { shipping_rate: "shr_1L7HGSJvB7fsxaM1DbSs7DeV" },
-            { shipping_rate: "shr_1L7HGyJvB7fsxaM1OpMXx2Fn" },
-          ],
           line_items: req.body.map((item) => {
             return {
               price_data: {

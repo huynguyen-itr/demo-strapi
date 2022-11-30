@@ -24,6 +24,7 @@ export default function Cart() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "userId": localStorage.getItem('userId')
       },
       body: JSON.stringify(cartItems),
     });
@@ -65,13 +66,13 @@ export default function Cart() {
                 animate={{ opacity: 1, scale: 1, transition: { delay: 0.4 } }}
                 key={item.slug}
               >
-                <img src={item.image.data.attributes.formats.small.url} />
+                <img src={item.image.data.attributes.formats.thumbnail.url} />
                 <CardInfo>
                   <h3>{item.title}</h3>
                   <h3>{item.price}$</h3>
                   <Quantity>
                     <span>Quantity</span>
-                    <button onClick={() => onRemove(item)}>
+                    <button onClick={() => onRemove(item ,1)}>
                       <AiFillMinusCircle />
                     </button>
                     <p>{item.quantity}</p>

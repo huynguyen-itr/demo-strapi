@@ -3,20 +3,19 @@ import { useRouter } from "next/router";
 const stripe = require("stripe")(
   `${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`
 );
-import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
+// import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
 import styled from "styled-components";
 import formatMoney from "../lib/formatMoney";
 
 export const getServerSideProps = withPageAuthRequired({
-  async getServerSideProps(ctx) {
-    // access the user session
-    const session = getSession(ctx.req, ctx.res);
-    const stripeId = session.user[`${process.env.BASE_URL}/stripe_customer_id`];
-    const paymentIntents = await stripe.paymentIntents.list({
-      customer: stripeId,
-    });
-    return { props: { orders: paymentIntents.data } };
-  },
+  // async getServerSideProps(ctx) {
+  //   const session = getSession(ctx.req, ctx.res);
+  //   const stripeId = session.user[`${process.env.BASE_URL}/stripe_customer_id`];
+  //   const paymentIntents = await stripe.paymentIntents.list({
+  //     customer: stripeId,
+  //   });
+  //   return { props: { orders: paymentIntents.data } };
+  // },
 });
 
 export default function Profile({ user, orders }) {
@@ -40,7 +39,7 @@ export default function Profile({ user, orders }) {
             </Order>
           ))}
         </div>
-        <button onClick={() => route.push("/api/auth/logout")}>Log out</button>
+        {/* <button onClick={() => route.push("/api/auth/logout")}>Log out</button> */}
       </div>
     )
   );
