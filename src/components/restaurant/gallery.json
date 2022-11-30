@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_restaurant_galleries",
+  "info": {
+    "displayName": "Gallery",
+    "icon": "chalkboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Pictures": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "strapi-project",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.7.3",
+    "@grpc/proto-loader": "^0.7.3",
+    "@strapi/plugin-graphql": "^4.5.2",
+    "@strapi/plugin-i18n": "4.5.2",
+    "@strapi/plugin-users-permissions": "4.5.2",
+    "@strapi/provider-upload-cloudinary": "^4.5.2",
+    "@strapi/provider-upload-local": "^4.5.2",
+    "@strapi/strapi": "4.5.2",
+    "aws-sdk": "^2.1262.0",
+    "axios": "^1.2.0",
+    "pg": "8.6.0",
+    "strapi-stripe": "^2.6.2"
+  },
+  "resolutions": {
+    "graphql": "15.5.0",
+    "**/graphql": "15.5.0"
+  },
+  "preinstall": "npx npm-force-resolutions",
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "76db8d17-ff39-4037-9765-e2d9e13fab3a"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
