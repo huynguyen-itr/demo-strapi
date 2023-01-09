@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import shiba from "../public/shiba-success.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect } from 'react';
+import shiba from "../public/shiba-success.png";
 const { motion } = require("framer-motion");
 // STRIPE_SECRET_KEY
 const stripe = require("stripe")(
@@ -15,12 +16,60 @@ export async function getServerSideProps(params) {
       expand: ["line_items"],
     }
   );
-console.log('order', order);
+// console.log('order', order);
+
   return { props: { order } };
 }
 
 export default function Success({ order }) {
   const route = useRouter();
+  
+  // useEffect(() => {
+  //   if (typeof window === 'undefined') {
+  //     return;
+  //   }
+    
+  //   if (order.status !== 'complete') {
+  //     return;
+  //   }
+    
+  //   const userId = localStorage.getItem('userId');
+  //   const token = localStorage.getItem('jwt');
+    
+  //   const variables = {
+  //     data: {
+  //       user: userId,
+  //       totalPrice: order.amount_total / 100,
+  //       totalQuantity: order.line_items.data.reduce((partialSum, item) => partialSum + item.quantity, 0)
+  //     }
+  //   };
+    
+  //   const headers = {
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   };
+
+  //   axios.post('http://localhost:1337/api/orders', variables, headers)
+  //   .then(function (response) {
+  //     console.log('response', response);
+  //     for (const item of order.line_items.data) {
+  //       console.log('item', item);
+  //       axios.post('http://localhost:1337/api/order-details', {
+  //         data: {
+  //           orderId: response.data.data.id,
+  //           productId: response.data.data.id,
+  //           quantity: item.quantity,
+  //         }
+  //       }, headers)
+  //     }
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+
+  // }, []);
+
   return (
     <Wrapper>
       <Card

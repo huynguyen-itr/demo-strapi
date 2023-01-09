@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   CartStyle,
   Card,
@@ -14,22 +15,52 @@ import { useStateContext } from "../lib/context";
 import getStripe from "../lib/getStripe";
 
 export default function Cart() {
-  const { cartItems, setShowCart, onAdd, onRemove, totalPrice } =
-    useStateContext();
+  const { cartItems, setShowCart, onAdd, onRemove, totalPrice, totalQuantities } = useStateContext();
 
-  //Payment
   const handleCheckout = async () => {
-    const stripePromise = await getStripe();
-    const response = await fetch("/api/stripe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "userId": localStorage.getItem('userId')
-      },
-      body: JSON.stringify(cartItems),
-    });
-    const data = await response.json();
-    await stripePromise.redirectToCheckout({ sessionId: data.id });
+    try {
+      const userId = localStorage.getItem('userId');
+      const token = localStorage.getItem('jwt');
+      
+      const variables = {
+        data: {
+          user: userId,
+          totalPrice,
+          totalQuantity: totalQuantities,
+          stripeSessionId: sessionId,
+          cartItems
+        }
+      };
+      
+      const headers = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+  
+      const order = await axios.post('http://localhost:1337/api/orders', variables, headers);
+      const orderId = order.data.data.id;
+  
+      const stripePromise = await getStripe();
+      const response = await fetch('/api/stripe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          userId
+        },
+        body: JSON.stringify({
+          cartItems,
+          orderId,
+          userId
+        }),
+      });
+      const data = await response.json();
+      const sessionId = data.id;
+  
+      await stripePromise.redirectToCheckout({ sessionId }); 
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -68,7 +99,7 @@ export default function Cart() {
               >
                 <img src={item.image.data.attributes.formats.thumbnail.url} />
                 <CardInfo>
-                  <h3>{item.title}</h3>
+                  <h3>{item.name}</h3>
                   <h3>{item.price}$</h3>
                   <Quantity>
                     <span>Quantity</span>

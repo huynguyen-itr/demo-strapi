@@ -7,7 +7,6 @@ const backendUrl = 'http://localhost:1337';
 const LoginRedirect = (props) => {
   const router = useRouter();
   const [text, setText] = useState('Loading...');
-
   const queryString = router.asPath.split('?')[1];
   const redirectUrl = `${backendUrl}/api/auth/cognito/callback?${queryString}`;
 console.log(router.query)
@@ -26,7 +25,7 @@ console.log(router.query)
       localStorage.setItem('userId', res.user.id);
       localStorage.setItem('email', res.user.email);
       setText('You have been successfully logged in. You will be redirected in a few seconds...');
-      setTimeout(() => window.location.href = 'http://localhost:3000' , 1500);
+      // setTimeout(() => window.location.href = 'http://localhost:3000' , 1500);
     })
     .catch(err => {
       console.log(err);

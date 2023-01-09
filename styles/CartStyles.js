@@ -38,7 +38,7 @@ export const Card = styled(motion.div)`
 `;
 
 export const CardInfo = styled(motion.div)`
-  width: 50%;
+  width: 100%;
   div {
     display: flex;
     justify-content: space-between;
