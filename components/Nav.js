@@ -1,10 +1,11 @@
-import Link from "next/link";
-import { FiShoppingBag } from "react-icons/fi";
-import { NavStyles, NavItems } from "../styles/NavStyles";
-import Cart from "./Cart";
-import { useStateContext } from "../lib/context";
-const { AnimatePresence, motion } = require("framer-motion");
-import User from "./User";
+import Link from 'next/link';
+import { FiShoppingBag } from 'react-icons/fi';
+import { NavStyles, NavItems } from '../styles/NavStyles';
+import Cart from './Cart';
+import { useStateContext } from '../lib/context';
+import User from './User';
+
+const { AnimatePresence, motion } = require('framer-motion');
 
 export default function Nav() {
   const { showCart, setShowCart, totalQuantities } = useStateContext();

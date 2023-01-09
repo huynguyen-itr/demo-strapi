@@ -38,7 +38,7 @@ export default function Cart() {
         },
       };
   
-      const order = await axios.post('http://localhost:1337/api/orders', variables, headers);
+      const order = await axios.post(`http://192.168.20.230:1337/api/orders`, variables, headers);
       const orderId = order.data.data.id;
   
       const stripePromise = await getStripe();
@@ -56,7 +56,7 @@ export default function Cart() {
       });
       const data = await response.json();
       const sessionId = data.id;
-  
+      console.log('cartItems', cartItems);
       await stripePromise.redirectToCheckout({ sessionId }); 
     } catch (error) {
       console.log(error);

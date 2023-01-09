@@ -30,7 +30,7 @@ export default function ProductDetails() {
       return;
     }
     
-    axios.get('http://localhost:1337/api/orders', {
+    axios.get(`http://192.168.20.230:1337/api/orders`, {
       headers: {
         Authorization: `Bearer ${token}`,
       }
