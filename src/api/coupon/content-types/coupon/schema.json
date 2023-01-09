@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coupons",
+  "info": {
+    "singularName": "coupon",
+    "pluralName": "coupons",
+    "displayName": "Coupon",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "couponId": {
+      "type": "uid"
+    },
+    "expiredAt": {
+      "type": "datetime"
+    },
+    "promotionCode": {
+      "type": "uid"
+    },
+    "couponType": {
+      "type": "enumeration",
+      "enum": [
+        "PERCENTAGE",
+        "FIXED_AMOUNT"
+      ]
+    },
+    "durationType": {
+      "type": "enumeration",
+      "enum": [
+        "FOREVER",
+        "ONCE",
+        "MULTIPLE_MONTHS"
+      ]
+    },
+    "numberOfMonths": {
+      "type": "integer"
+    },
+    "limitRedeemTimes": {
+      "type": "integer"
+    },
+    "discount": {
+      "type": "decimal"
+    },
+    "product_coupons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-coupon.product-coupon",
+      "mappedBy": "coupon"
+    },
+    "coupon_codes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::coupon-code.coupon-code",
+      "mappedBy": "coupon"
+    }
+  }
+}

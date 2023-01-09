@@ -4,7 +4,8 @@
   "info": {
     "singularName": "transaction",
     "pluralName": "transactions",
-    "displayName": "Transaction"
+    "displayName": "Transaction",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,48 +13,47 @@
   "pluginOptions": {},
   "attributes": {
     "stripe_id": {
-      "type": "uid"
-    },
-    "amount_total": {
-      "type": "decimal"
-    },
-    "currency": {
       "type": "string",
-      "default": "usd"
+      "required": true
     },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
-    },
-    "shipping_city": {
-      "type": "string"
-    },
-    "shipping_country": {
-      "type": "string"
-    },
-    "shipping_line1": {
-      "type": "string"
-    },
-    "shipping_line2": {
-      "type": "string"
-    },
-    "shipping_postal_code": {
-      "type": "string"
-    },
-    "shipping_state": {
-      "type": "string"
-    },
-    "payment_name": {
+    "api_version": {
       "type": "string"
     },
     "status": {
-      "type": "enumeration",
-      "enum": [
-        "complete",
-        "pending",
-        "cancel"
-      ]
+      "type": "string"
+    },
+    "payment_method": {
+      "type": "string"
+    },
+    "client_secret": {
+      "type": "string"
+    },
+    "confirmation_method": {
+      "type": "string"
+    },
+    "canceled_at": {
+      "type": "string"
+    },
+    "application_fee_amount": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "string"
+    },
+    "amount_received": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "cancellation_reason": {
+      "type": "string"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order.order",
+      "inversedBy": "transaction"
     }
   }
 }

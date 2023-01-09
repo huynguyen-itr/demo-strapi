@@ -1,0 +1,125 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Payment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pi_id": {
+      "type": "uid",
+      "required": true
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "payments"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order.order",
+      "inversedBy": "payment"
+    },
+    "created": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "amount_received": {
+      "type": "decimal"
+    },
+    "type": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "ref_subscription": {
+      "type": "string"
+    },
+    "interval": {
+      "type": "integer"
+    },
+    "interval_count": {
+      "type": "integer"
+    },
+    "ref_customer": {
+      "type": "string"
+    },
+    "ref_price": {
+      "type": "string"
+    },
+    "start": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "trial_end": {
+      "type": "string"
+    },
+    "trial_start": {
+      "type": "string"
+    },
+    "expired_payment": {
+      "type": "string"
+    },
+    "receipt_url": {
+      "type": "string"
+    },
+    "last4": {
+      "type": "integer"
+    },
+    "exp_month": {
+      "type": "integer"
+    },
+    "exp_year": {
+      "type": "integer"
+    },
+    "country": {
+      "type": "string"
+    },
+    "payment_method": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "funding": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "line1": {
+      "type": "string"
+    },
+    "line2": {
+      "type": "string"
+    },
+    "postal_code": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    }
+  }
+}

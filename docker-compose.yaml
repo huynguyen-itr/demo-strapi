@@ -7,8 +7,9 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - /Users/huynguyen/Data/database-data/pgdata:/var/lib/postgresql/data
     environment:
+      POSTGRES_DB: bio-ecommerce
       POSTGRES_PASSWORD: mysecretpassword
 
   backend:
@@ -27,6 +28,3 @@ services:
       - DATABASE_HOST=db
     depends_on:
       - db
-
-volumes:
-  db-data:

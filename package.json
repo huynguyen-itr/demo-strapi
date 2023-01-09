@@ -19,14 +19,21 @@
     "@strapi/provider-upload-cloudinary": "^4.5.2",
     "@strapi/provider-upload-local": "^4.5.2",
     "@strapi/strapi": "4.5.2",
+    "@strapi/utils": "^4.5.3",
     "aws-sdk": "^2.1262.0",
     "axios": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "lodash": "^4.17.21",
     "pg": "8.6.0",
-    "strapi-stripe": "^2.6.2"
+    "process": "^0.11.10",
+    "strapi-stripe": "^2.6.2",
+    "stripe": "^11.1.0"
   },
   "resolutions": {
     "graphql": "15.5.0",
-    "**/graphql": "15.5.0"
+    "**/graphql": "15.5.0",
+    "axios": "0.2.7"
   },
   "preinstall": "npx npm-force-resolutions",
   "author": {

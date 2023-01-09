@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_prices",
+  "info": {
+    "singularName": "product-price",
+    "pluralName": "product-prices",
+    "displayName": "Product Price",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "price": {
+      "type": "decimal"
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": [
+        "USD"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "ONETIME",
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "EVERY_3_MONTHS",
+        "EVERY_6_MONTHS",
+        "YEARLY"
+      ]
+    },
+    "note": {
+      "type": "string"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "product_prices"
+    },
+    "stripe_id": {
+      "type": "uid"
+    }
+  }
+}

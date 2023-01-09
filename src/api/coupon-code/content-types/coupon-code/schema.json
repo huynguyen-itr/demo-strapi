@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coupon_codes",
+  "info": {
+    "singularName": "coupon-code",
+    "pluralName": "coupon-codes",
+    "displayName": "Coupon Code"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "coupon": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::coupon.coupon",
+      "inversedBy": "coupon_codes"
+    },
+    "code": {
+      "type": "string"
+    },
+    "isCustomerFirstTimePurchase": {
+      "type": "boolean"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "coupon_code"
+    },
+    "limitTimes": {
+      "type": "integer"
+    },
+    "expiredAt": {
+      "type": "datetime"
+    },
+    "minOrder": {
+      "type": "decimal"
+    }
+  }
+}
