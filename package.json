@@ -21,7 +21,7 @@
     "@strapi/strapi": "4.5.2",
     "@strapi/utils": "^4.5.3",
     "aws-sdk": "^2.1262.0",
-    "axios": "^1.2.0",
+    "axios": "^0.21.4",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
