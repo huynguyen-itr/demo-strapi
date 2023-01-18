@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const NavStyles = styled.nav`
-  min-height: 7vh;
+  min-height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;

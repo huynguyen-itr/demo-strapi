@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useStateContext } from '../../../../lib/context';
 
-const backendUrl = 'http://192.168.20.230:1337';
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 console.log('backendUrl', backendUrl)
 const LoginRedirect = props => {
   const router = useRouter();

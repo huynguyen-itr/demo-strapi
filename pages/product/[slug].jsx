@@ -38,6 +38,7 @@ export default function ProductDetails() {
       </p>
     );
   }
+  console.log('data', data)
   const { name, description, image, price } = data.products.data[0].attributes;
 
   const notify = () => {

@@ -38,7 +38,7 @@ export default function Cart() {
         },
       };
   
-      const order = await axios.post(`http://192.168.20.230:1337/api/orders`, variables, headers);
+      const order = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/orders`, variables, headers);
       const orderId = order.data.data.id;
   
       const stripePromise = await getStripe();

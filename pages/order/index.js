@@ -30,7 +30,7 @@ export default function ProductDetails() {
       return;
     }
     
-    axios.get(`http://192.168.20.230:1337/api/orders`, {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/orders`, {
       headers: {
         Authorization: `Bearer ${token}`,
       }

@@ -27,7 +27,7 @@ export default function User() {
   };
 
   const LoginButton = () => {
-    const connectCognitoLink = `http://192.168.20.230:1337/api/connect/cognito`;
+    const connectCognitoLink = `${process.env.REACT_APP_BACKEND_URL}/api/connect/cognito`;
     return <a href={connectCognitoLink}>
       <button style={{ width: '150px' }}>Connect to cognito</button>
     </a>
@@ -43,11 +43,8 @@ export default function User() {
 
   if (!isLogged) {
     return (
-    // <div onClick={() => {}}>
-    //   <FaUserCircle className="profile" />
-    //   <h3>Login with cognito</h3>
-    // </div>
-      <LoginButton />
+      // <LoginButton />
+      ''
     );
   }
   return (

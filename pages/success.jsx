@@ -50,12 +50,12 @@ export default function Success({ order }) {
   //     },
   //   };
 
-  //   axios.post('http://192.168.20.230:1337/api/orders', variables, headers)
+  //   axios.post('process.env.REACT_APP_BACKEND_URL/api/orders', variables, headers)
   //   .then(function (response) {
   //     console.log('response', response);
   //     for (const item of order.line_items.data) {
   //       console.log('item', item);
-  //       axios.post('http://192.168.20.230:1337/api/order-details', {
+  //       axios.post('process.env.REACT_APP_BACKEND_URL/api/order-details', {
   //         data: {
   //           orderId: response.data.data.id,
   //           productId: response.data.data.id,

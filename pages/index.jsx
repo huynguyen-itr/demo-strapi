@@ -45,8 +45,8 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps() {
-  const result = await axios.get(`http://192.168.20.230:1337/api/products`);
-  const products = result.data.data;
-  return { props: { products } };
-}
+// export async function getServerSideProps() {
+//   const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/products`);
+//   const products = result.data.data;
+//   return { props: { products } };
+// }

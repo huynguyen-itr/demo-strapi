@@ -25,7 +25,7 @@ export default function OrderDetails() {
 
     setIsLoading(true);
 
-    axios.get(`http://192.168.20.230:1337/api/order/order-details/${id}`, {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/order/order-details/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -3,6 +3,7 @@ import { ProductStyles } from '../styles/ProductStyle';
 
 export default function Product({ product }) {
   // Extract from props
+  console.log('product', product);
   const { name, price = '', image = null, slug } = product.attributes;
   return (
     <ProductStyles>
