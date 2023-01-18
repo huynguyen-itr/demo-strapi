@@ -26,13 +26,13 @@ const server = new grpc.Server();
 server.addService(grpcChat.ChatService.service, {
   chat,
 });
-server.bindAsync('127.0.0.1:50055', grpc.ServerCredentials.createInsecure(), (err, result) => {
-  if (err) {
-    return console.log(err);
-  }
-  server.start();
-  console.log('gRPC Chat Server started...');
-});
+// server.bindAsync('127.0.0.1:50055', grpc.ServerCredentials.createInsecure(), (err, result) => {
+//   if (err) {
+//     return console.log(err);
+//   }
+  // server.start();
+  // console.log('gRPC Chat Server started...');
+// });
 
 module.exports = ({ env }) => ({
   host: env('HOST', '0.0.0.0'),

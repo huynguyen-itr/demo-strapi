@@ -1,10 +1,10 @@
-FROM arm64v8/node:14.18.1-alpine
+FROM node:16.18.1-alpine
 # Installing libvips-dev for sharp Compatibility
 WORKDIR /app
 
 COPY package.json .
 
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 COPY . .
 
