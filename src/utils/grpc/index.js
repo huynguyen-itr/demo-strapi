@@ -1,4 +1,4 @@
-const { Client } = require('ugrpc');
+const { Client, Server } = require('ugrpc');
 const config = require('../../config');
 
 async function processAny(params) {

@@ -12,20 +12,18 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "description": {
-      "type": "string"
-    },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "title"
     },
     "image": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "allowedTypes": [
         "images"
@@ -52,18 +50,18 @@
     "currency": {
       "type": "string"
     },
-    "product_prices": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product-price.product-price",
-      "mappedBy": "product"
-    },
     "stripe_id": {
       "type": "uid",
       "required": true
     },
     "price": {
       "type": "decimal"
+    },
+    "size": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

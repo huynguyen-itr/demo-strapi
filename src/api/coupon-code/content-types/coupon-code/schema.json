@@ -23,12 +23,6 @@
     "isCustomerFirstTimePurchase": {
       "type": "boolean"
     },
-    "user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "coupon_code"
-    },
     "limitTimes": {
       "type": "integer"
     },

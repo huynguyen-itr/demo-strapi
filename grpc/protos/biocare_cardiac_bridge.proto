@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package cardiac;
+
+service BiocareCardiacBridge {
+  rpc UpdateBioheartAuthorized(UpdateBioheartAuthorizedRequest) returns (GeneralResponse);
+  rpc UpdateBioheartReportStatus(UpdateBioheartReportStatusRequest) returns (GeneralResponse);
+  rpc UpdateBiofluxStudyStatus(UpdateBiofluxStudyStatusRequest) returns (GeneralResponse);
+  rpc UpdateBiofluxReportStatus(UpdateBiofluxReportStatusRequest) returns (GeneralResponse);
+  rpc NotifyCalendarAppointment(NotifyCalendarAppointmentRequest) returns (GeneralResponse);
+  rpc ConditionInfo(ConditionInfoRequest) returns (ConditionInfoResponse);
+  rpc GetCarePlanByPatientName(GetCarePlanByPatientNameRequest) returns (GetCarePlanByPatientNameResponse);
+}
+
+message GeneralResponse {
+  bool is_success = 1;
+  string message = 2;
+}
+
+message ConditionInfoResponse {
+  repeated string medical_conditions = 1;
+  string allergies = 2;
+}
+
+message GetCarePlanByPatientNameResponse {
+  repeated string care_plan_ids = 1;
+}
+
+message UpdateBioheartAuthorizedRequest {
+  string care_plan_id = 1;
+  bool is_authorized = 2;
+}
+
+message UpdateBioheartReportStatusRequest {
+  string care_plan_id = 1;
+  string report_id = 2;
+  string status = 3;
+  string user_id = 4;
+  string old_status = 5;
+  string reason = 6;
+}
+
+message UpdateBiofluxStudyStatusRequest {
+  string care_plan_id = 1;
+  string user_id = 2;
+  string study_id = 3;
+  string status = 4;  // "Started" or "Completed"
+  int32 study_fid = 5;
+}
+
+message UpdateBiofluxReportStatusRequest {
+  string care_plan_id = 1;
+  string user_id = 2;
+  string study_id = 3;
+  string report_id = 4;
+  bool is_reviewed = 5;
+  int32 study_fid = 6;
+  int32 report_fid = 7;
+}
+
+message NotifyCalendarAppointmentRequest {
+  message Address {
+    string country = 1;
+    string state = 2;
+    string address = 3;
+    string city = 4;
+    string zip = 5;
+  }
+
+  message Attendee {
+    string user = 1;
+    string type = 2;
+  }
+
+  message AppointmentInfo {
+    string appointment_type = 1;  // InPerson or Virtual
+    repeated Attendee attendees = 2;
+    string from_time = 3;
+    string to_time = 4;
+    string status = 5;
+    Address address = 6;
+    string recurring_id = 7;
+    int32 recurring_day = 8;
+  }
+
+  string _id = 1;
+  string user_id = 2;
+  AppointmentInfo appointment = 3;
+  AppointmentInfo old_appointment = 4;
+  string action = 5;  // Added, Updated, Canceled, Overdue
+  string care_plan_id = 6;
+  string follow_up_id = 7;
+  string patient_id = 8;
+  string facility_id = 9;
+  bool is_recurring = 10;
+  string source = 11; // Cardiac or Telemed
+  string end_recurring_date = 12;
+}
+
+message ConditionInfoRequest {
+  string user_id = 1;
+}
+
+message GetCarePlanByPatientNameRequest {
+  string patient_name = 1;
+}

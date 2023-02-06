@@ -62,24 +62,6 @@
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false
-    },
-    "orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "user"
-    },
-    "coupon_code": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::coupon-code.coupon-code",
-      "inversedBy": "user"
-    },
-    "payments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::payment.payment",
-      "mappedBy": "users_permissions_user"
     }
   }
 }

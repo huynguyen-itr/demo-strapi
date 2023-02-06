@@ -9,10 +9,7 @@
       "name": "Run npm develop",
       "request": "launch",
       "type": "node-terminal",
-      "env": {
-        "DATABASE_SSL": "false",
-        "NODE_ENV": "development",
-      }
+      "envFile": "${workspaceFolder}/.env"
     }
   ]
 }

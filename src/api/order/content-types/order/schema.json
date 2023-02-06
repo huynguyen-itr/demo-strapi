@@ -22,12 +22,6 @@
       "type": "string",
       "default": "pending"
     },
-    "user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "orders"
-    },
     "order_details": {
       "type": "relation",
       "relation": "oneToMany",
